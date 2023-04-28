@@ -149,34 +149,7 @@ server <- function(input, output) {
 # Run the application 
 shinyApp(ui = ui, server = server)
 
-#------------------------------------------------------------------------------------
-## Conducting Multivariate Regression Analysis
 
-### These variables describing crime rate, proportion of lower status in the population, and
-### pupil-teacher ratio seemed particularly interesting- and are being analyzed for their correlation to MEDV
-
-
-### Investigating the relationship between CRIM and MEDV using linear regression analysis.
-model1 <- lm(formula = medv ~ crim, data = data)
-summary(model1)
-str(model1)
-
-test1 <- data.frame(CRIM = 0.02729)
-predict(model1, test1, type = "response")
-
-#Investigating the relationship between CRIM and LSTAT, and MEDV. 
-model2 <- lm(formula = MEDV ~ CRIM + LSTAT, data = data)
-summary(model2)
-
-test2 <- data.frame(CRIM = 0.02729, LSTAT = 4.03)
-predict(model2, test2, type = "response")
-
-#Investigating the relationship between CRIM, LSTAT, PTRATIO, and MEDV.
-model3 <- lm(formula = MEDV ~ CRIM + LSTAT + PTRATIO, data = data)
-summary(model3)
-
-test3 <- data.frame(CRIM = 0.02729, LSTAT = 4.03, PTRATIO = 17.8)
-predict(model3, test3, type = "response")
 
 #-----------------------------------------------------------------------------------
 #Plotting Factors by R Squared values
